@@ -157,8 +157,8 @@ export const StyledHeader = styled.div`
         transform: translate(-50%, -50%);
     }
     .nav__icon{
-        position: absolute;
-        top: -45px;
+        position: fixed;
+        top: 0px;
         left: 220px;
         padding: 10px;
         cursor: pointer;
@@ -245,6 +245,9 @@ export const StyledMenu = styled.div`
         padding: 10px 0px 10px 0px;
         margin: 11px 15px 10px 15px;
         border-bottom: 2px solid #000;
+    }
+    .extend{
+        height: 100%;
     }
     .extend .extend_item{
         padding-top: 12px;

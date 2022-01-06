@@ -68,7 +68,7 @@ export const StyledWrapper = styled.div`
         width: 100%;
     }
     .col-lg-8{
-        width: 70%;
+        width: 60%;
     }
 
 `
@@ -215,6 +215,7 @@ export const StyledMall = styled.div`
     svg{
         width: 25px;
         height: 25px;
+        margin-left:10px;
     }
     .hidden{
         visibility: hidden;
