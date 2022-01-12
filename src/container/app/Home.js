@@ -27,7 +27,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Fade from 'react-reveal';
 
-import HomeHeader from '../data/home-header'
+import HomeData from '../data/home-data'
 
 function Home() {
     const openRef = useRef(null)
@@ -48,235 +48,55 @@ function Home() {
                 </div>
                 <StyledMenu>
                     <ul className="nav">
-                        <li className="nav_item">
-                            <a href="#!" className="nav_link">最新活動</a>
-                            <div className="menu2">
-                                <div className="title">最新活動</div>
-                                <div className="navbarhide">
-                                    <button className="navbar-hide">
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                                <ul className="extend">
-                                    {HomeHeader[0].activity.map((item, index) => {
-                                        return (
-                                            <li className="extend_item">
-                                                <div className="unfold"></div>
-                                                <Link to="" className="extend_link">{item.item}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="nav_item">
-                            <a href="#!" className="nav_link">新品情報</a>
-                            <div className="menu2">
-                                <div className="title">新品情報</div>
-                                <div className="navbarhide">
-                                    <button className="navbar-hide">
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                                <ul className="extend">
-                                    {HomeHeader[0].newproduct.map((item, index) => {
-                                        return (
-                                            <li className="extend_item">
-                                                <div className="unfold"></div>
-                                                <Link to="" className="extend_link">{item.item}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="nav_item">
-                            <a href="#!" className="nav_link">FamilPort</a>
-                            <div className="menu2">
-                                <div className="title">FamilPort</div>
-                                <div className="navbarhide">
-                                    <button className="navbar-hide">
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                                <ul className="extend">
-                                    {HomeHeader[0].familport.map((item, index) => {
-                                        return (
-                                            <li className="extend_item">
-                                                <div className="unfold"></div>
-                                                <Link to="" className="extend_link">{item.item}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="nav_item">
-                            <a href="#!" className="nav_link">便利服務</a>
-                            <div className="menu2">
-                                <div className="title">便利服務</div>
-                                <div className="navbarhide">
-                                    <button className="navbar-hide">
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                                <ul className="extend">
-                                    {HomeHeader[0].familport.map((item, index) => {
-                                        return (
-                                            <li className="extend_item">
-                                                <div className="unfold"></div>
-                                                <Link to="" className="extend_link">{item.item}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="nav_item">
-                            <a href="#!" className="nav_link">會員中心</a>
-                            <div className="menu2">
-                                <div className="title">會員中心</div>
-                                <div className="navbarhide">
-                                    <button className="navbar-hide">
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                                <ul className="extend">
-                                    {HomeHeader[0].member.map((item, index) => {
-                                        return (
-                                            <li className="extend_item">
-                                                <div className="unfold"></div>
-                                                <Link to="" className="extend_link">{item.item}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="nav_item">
-                            <a href="#!" className="nav_link">全家相關網站</a>
-                            <div className="menu2">
-                                <div className="title">全家相關網站</div>
-                                <div className="navbarhide">
-                                    <button className="navbar-hide">
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                                <ul className="extend">
-                                    {HomeHeader[0].websites.map((item, index) => {
-                                        return (
-                                            <li className="extend_item">
-                                                <div className="unfold"></div>
-                                                <Link to="" className="extend_link">{item.item}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="nav_item">
-                            <a href="#!" className="nav_link">各項查詢</a>
-                            <div className="menu2">
-                                <div className="title">各項查詢</div>
-                                <div className="navbarhide">
-                                    <button className="navbar-hide">
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                                <ul className="extend">
-                                    {HomeHeader[0].search.map((item, index) => {
-                                        return (
-                                            <li className="extend_item">
-                                                <div className="unfold"></div>
-                                                <Link to="" className="extend_link">{item.item}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
+                        {HomeData[0].navtitle.map((title, index) => {
+                            return (
+                                <li className="nav_item">
+                                    <a href="#!" className="nav_link">{title.title}</a>
+                                    <div className="menu2">
+                                        <div className="title">{title.title}</div>
+                                        <div className="navbarhide">
+                                            <button className="navbar-hide">
+                                                <i className="fas fa-bars"></i>
+                                            </button>
+                                        </div>
+                                        <ul className="extend">
+                                            {HomeData[0].navtitle[index].inside.map((item, index) => {
+                                                return (
+                                                    <li className="extend_item">
+                                                        <div className="unfold"></div>
+                                                        <Link to="" className="extend_link">{item.item}</Link>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </div>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </StyledMenu>
                 <StyledMenu3>
-                        <button className="close-btn">
-                            <span></span>
-                            <span></span>
-                        </button>
-                        <section className="menu3-container">
-                            <div className="nav-container">
+                    <button className="close-btn">
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <section className="menu3-container">
+                        <div className="nav-container">
+                            {HomeData[0].navtitle.map((title, index) => {
                                 <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>最新活動</div>
+                                    <div className="nav-title"><div className="icon-add"></div>{title.title}</div>
                                     <div className="nav-content">
-                                        {HomeHeader[0].activity.map((item, index) => {
+                                        {HomeData[0].navtitle[index].inside.map((item, index) => {
                                             return (
                                                 <p>{item.item}</p>
                                             )
                                         })}
                                     </div>
                                 </div>
-                                <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>新品情報</div>
-                                    <div className="nav-content">
-                                        {HomeHeader[0].newproduct.map((item, index) => {
-                                            return (
-                                                <p>{item.item}</p>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                                <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>FamilPort</div>
-                                    <div className="nav-content">
-                                        {HomeHeader[0].familport.map((item, index) => {
-                                            return (
-                                                <p>{item.item}</p>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                                <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>便利服務</div>
-                                    <div className="nav-content">
-                                        {HomeHeader[0].convenient.map((item, index) => {
-                                            return (
-                                                <p>{item.item}</p>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                                <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>會員中心</div>
-                                    <div className="nav-content">
-                                        {HomeHeader[0].member.map((item, index) => {
-                                            return (
-                                                <p>{item.item}</p>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                                <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>全家相關網站</div>
-                                    <div className="nav-content">
-                                        {HomeHeader[0].websites.map((item, index) => {
-                                            return (
-                                                <p>{item.item}</p>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                                <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>各項查詢</div>
-                                    <div className="nav-content">
-                                        {HomeHeader[0].search.map((item, index) => {
-                                            return (
-                                                <p>{item.item}</p>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </StyledMenu3>
+                            })}
+                        </div>
+                    </section>
+                </StyledMenu3>
             </StyledNavbar>
         
         </StyledHeader>
@@ -456,7 +276,7 @@ function Home() {
                                     <div className="news_one">
                                         <h2>新品上市</h2>
                                         <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeHeader[1].news.map((image, index) => {
+                                            {HomeData[1].news.map((image, index) => {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
@@ -479,7 +299,7 @@ function Home() {
                                                 <div className="image-container3">
                                                     <div className="image3 Feature"></div>
                                                 </div>
-                                                <h3>{HomeHeader[1].feature[0].name}</h3>
+                                                <h3>{HomeData[1].feature[0].name}</h3>
                                             </div>
                                         </OwlCarousel>
                                     </div>
@@ -494,7 +314,7 @@ function Home() {
                                                 <div className="image-container3">
                                                     <div className="image3 play"></div>
                                                 </div>
-                                                <h3>{HomeHeader[1].play[0].name}</h3>
+                                                <h3>{HomeData[1].play[0].name}</h3>
                                             </div>
                                         </OwlCarousel>
                                     </div>
@@ -509,7 +329,7 @@ function Home() {
                                     <div className="news_one">
                                         <h2>熱門活動</h2>
                                         <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeHeader[1].activity.map((image, index) => {
+                                            {HomeData[1].activity.map((image, index) => {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
@@ -528,7 +348,7 @@ function Home() {
                                     <div className="news_one">
                                         <h2>預購精選</h2>
                                         <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeHeader[1].pre.map((image, index) => {
+                                            {HomeData[1].pre.map((image, index) => {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
@@ -547,7 +367,7 @@ function Home() {
                                     <div className="news_one">
                                         <h2>生活關係企業</h2>
                                         <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeHeader[1].relation.map((image, index) => {
+                                            {HomeData[1].relation.map((image, index) => {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
@@ -574,7 +394,7 @@ function Home() {
                                                 <div className="image-container3">
                                                     <div className="image3 discount"></div>
                                                 </div>
-                                                <h3>{HomeHeader[1].play[0].name}</h3>
+                                                <h3>{HomeData[1].play[0].name}</h3>
                                             </div>
                                         </OwlCarousel>
                                     </div>
@@ -585,7 +405,7 @@ function Home() {
                                     <div className="news_one">
                                         <h2>全家告示牌</h2>
                                         <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeHeader[1].noticboard.map((image, index) => {
+                                            {HomeData[1].noticboard.map((image, index) => {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
@@ -604,7 +424,7 @@ function Home() {
                                     <div className="news_one">
                                         <h2>生活關係企業</h2>
                                         <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeHeader[1].relation.map((image, index) => {
+                                            {HomeData[1].relation.map((image, index) => {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
@@ -626,144 +446,44 @@ function Home() {
         <StyledFooter>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-5 col-md-4">
-                        <div className="space">
-                            <h3 className="title">{HomeHeader[2].fmapp[0].title}</h3>
-                            <div className="news_two">
-                                <Link to="/" className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 app1"></div>
+                    {HomeData[2].fmapp.map((fmapp, index) => {
+                        return (
+                            <div className="col-lg-5 col-md-4">
+                                <div className="space">
+                                    <h3 className="title">{fmapp.title}</h3>
+                                    <div className="news_two">
+                                        <Link to="/" className="fmapp">
+                                            <div className="image-container4">
+                                                <div className={fmapp.class}></div>
+                                            </div>
+                                        </Link>
+                                        <h3 className="para">{fmapp.subtitle}</h3>
+                                        <Link to="/" className="fmapp">
+                                            <div className="image-container4">
+                                                <div className="image4 app2"></div>
+                                            </div>
+                                        </Link>
                                     </div>
-                                </Link>
-                                <h3 className="para">{HomeHeader[2].fmapp[3].title}</h3>
-                                <Link to="/" className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 app2"></div>
-                                    </div>
-                                </Link>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-5 col-md-4">
-                        <div className="space">
-                            <h3 className="title">{HomeHeader[2].fmapp[0].title}</h3>
-                            <div className="news_two">
-                                <Link to="/" className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 app3"></div>
-                                    </div>
-                                </Link>
-                                <h3 className="para">{HomeHeader[2].fmapp[3].title}</h3>
-                                <Link to="/" className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 app4"></div>
-                                    </div>
-                                </Link>
+                        )
+                    })}
+                    {HomeData[2].apps.map((app, index) => {
+                        return (
+                            <div className="col-lg-55 col-md-55">
+                                <div className="news_three">
+                                    <Link to="/">
+                                        <div className="fmapp">
+                                            <div className="image-container4">
+                                                <div className={app.class}></div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                    <h5 className="para">{app.title}</h5>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-5 col-md-4">
-                        <div className="space">
-                            <h3 className="title">{HomeHeader[2].fmapp[0].title}</h3>
-                            <div className="news_two">
-                                <Link to="/" className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 line1"></div>
-                                    </div>
-                                </Link>
-                                <h3 className="para">{HomeHeader[2].fmapp[3].title}</h3>
-                                <Link to="/" className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 line2"></div>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-55 col-md-55">
-                        <div className="news_three">
-                            <Link to="/">
-                                <div className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 fans1"></div>
-                                    </div>
-                                </div>
-                            </Link>
-                            <h5 className="para">全家FmailyMart粉絲團</h5>
-                        </div>
-                    </div>
-                    <div className="col-lg-55 col-md-55">
-                        <div className="news_three">
-                            <Link to="/">
-                                <div className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 fans2"></div>
-                                    </div>
-                                </div>
-                            </Link>
-                            <h5 className="para">全家在這裡粉絲團</h5>
-                        </div>
-                    </div>
-                    <div className="col-lg-55 col-md-55">
-                        <div className="news_three">
-                            <Link to="/">
-                                <div className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 youtube"></div>
-                                    </div>
-                                </div>
-                            </Link>
-                            <h5 className="para">FamiChannel專區</h5>
-                        </div>
-                    </div>
-                    <div className="col-lg-55 col-md-55">
-                        <div className="news_three">
-                            <Link to="/">
-                                <div className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 famiclub"></div>
-                                    </div>
-                                </div>
-                            </Link>
-                            <h5 className="para">FamiClub</h5>
-                        </div>
-                    </div>
-                    <div className="col-lg-55 col-md-55">
-                        <div className="news_three">
-                            <Link to="/">
-                                <div className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 fmih"></div>
-                                    </div>
-                                </div>
-                            </Link>
-                            <h5 className="para">全家在這裡部落格</h5>
-                        </div>
-                    </div>
-                    <div className="col-lg-55 col-md-55">
-                        <div className="news_three">
-                            <Link to="/">
-                                <div className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 wifi"></div>
-                                    </div>
-                                </div>
-                            </Link>
-                            <h5 className="para">FamiWifi</h5>
-                        </div>
-                    </div>
-                    <div className="col-lg-55 col-md-55">
-                        <div className="news_three">
-                            <Link to="/">
-                                <div className="fmapp">
-                                    <div className="image-container4">
-                                        <div className="image4 ins"></div>
-                                    </div>
-                                </div>
-                            </Link>
-                            <h5 className="para">FamilyMart Instagram</h5>
-                        </div>
-                    </div>
+                        )
+                    })}
                 </div>
                 <div className="preview">
                     <h2 className="para">

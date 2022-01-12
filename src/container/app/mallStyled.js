@@ -37,6 +37,9 @@ export const StyledWrapper = styled.div`
         text-decoration: none;
         color: #333;
     }
+    .container{
+        padding: 0 16% 0 16%;
+    }
     .row:after{
         content: '';
         display: block;
@@ -145,10 +148,10 @@ export const StyledMall = styled.div`
         float: left;
         width: 20%;
     }
-    // .ant-menu{
-    //     background-color: #f1f1f1;
-    //     border-color: #fff;
-    // }
+    .ant-menu{
+        background-color: #f1f1f1;
+        border-color: #fff;
+    }
     .ant-menu i{
         top: 0;
         left: 10%;
@@ -159,6 +162,9 @@ export const StyledMall = styled.div`
     .news-mall{
         width: 79%;
         float: right;
+    }
+    .clearfloat{
+        clear: both;
     }
     .classification {
         display: -webkit-box;
@@ -258,6 +264,7 @@ export const StyledMall = styled.div`
 export const StyledFooter = styled.div`
     width: 100%;
     height: 100%;
+    clear: both;
     .container{
         background-color: #fff;
     }

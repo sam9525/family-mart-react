@@ -99,7 +99,7 @@ function Mall() {
                     </div>
                 </div>
             </StyledMall>
-            {/* <StyledFooter>
+            <StyledFooter>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-5 col-md-4">
@@ -250,7 +250,7 @@ function Mall() {
                         <h2 className="para">Copyright&copy;2013FamilyMart All rights reserved.</h2>
                     </div>
                 </div>
-            </StyledFooter> */}
+            </StyledFooter>
         </StyledWrapper>
     )
 }
