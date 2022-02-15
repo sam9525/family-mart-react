@@ -10,16 +10,15 @@ import {
   Route
 } from 'react-router-dom'
 
-
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
   <Router>
     <React.StrictMode>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="Mall" element={<Mall />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="Mall" element={<Mall />} />
+      </Routes>
     </React.StrictMode>
   </Router>,
   rootElement

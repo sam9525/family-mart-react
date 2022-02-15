@@ -16,6 +16,7 @@ import fmih from '../images/fmih.jpg'
 import wifi from '../images/wifi.jpg'
 import ins from '../images/ins.jpg'
 
+
 export const StyledWrapper = styled.div`
     *{
         box-sizing: border-box;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import 'antd/dist/antd.css'
 import {
     Menu,
@@ -16,11 +16,37 @@ import {
 import {
     Link,
 } from 'react-router-dom'
+import axios from 'axios'
 
 import MallData from '../data/mall-data';
 
 
 function Mall() {
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+
+
+    const [todos, setTodos] = useState([]);
+
+    const getTodo = () => {
+        axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        .then((res) => {
+          console.log(res);
+          const data = res.data;
+          setTodos([
+            ...todos,
+            data
+          ])
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      }
+
+
     return (
         <StyledWrapper>
             <StyledTopbar>
@@ -29,6 +55,18 @@ function Mall() {
                         <h1>familymall</h1>
                     </Link>
                     <ul className="nav">
+                        <li className="nav_item">
+                            <button onClick={() => {getTodo()}} className="nav_link">最新商品</button>
+                        </li>
+                        {
+                            todos.map((todo) => {
+                                return (
+                                  <div>
+                                    <div key={todo.id}>title: {todo.title}</div>
+                                  </div>
+                                );
+                              })
+                        }
                         <li className="nav_item">
                             <Link to="" className="nav_link">最新商品</Link>
                         </li>
@@ -450,5 +488,8 @@ const Sider = () => {
         </Menu>
     );
 };
+
+
+
 
 export default Mall;

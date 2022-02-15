@@ -30,6 +30,11 @@ import Fade from 'react-reveal';
 import HomeData from '../data/home-data'
 
 function Home() {
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+     });
     const openRef = useRef(null)
     const left0Ref = useRef(null)
     const handleClick = () => {
@@ -280,7 +285,7 @@ function Home() {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
-                                                            <div className={image.id}></div>
+                                                            <div className={image.class}></div>
                                                         </div>
                                                         <h3>{image.name}</h3>
                                                     </div>
@@ -333,7 +338,7 @@ function Home() {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
-                                                            <div className={image.id}></div>
+                                                            <div className={image.class}></div>
                                                         </div>
                                                         <h3>{image.name}</h3>
                                                     </div>
@@ -352,7 +357,7 @@ function Home() {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
-                                                            <div className={image.id}></div>
+                                                            <div className={image.class}></div>
                                                         </div>
                                                         <h3>{image.name}</h3>
                                                     </div>
@@ -371,7 +376,7 @@ function Home() {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
-                                                            <div className={image.id}></div>
+                                                            <div className={image.class}></div>
                                                         </div>
                                                         <h3>{image.name}</h3>
                                                     </div>
@@ -409,7 +414,7 @@ function Home() {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
-                                                            <div className={image.id}></div>
+                                                            <div className={image.class}></div>
                                                         </div>
                                                         <h3>{image.name}</h3>
                                                     </div>
@@ -428,7 +433,7 @@ function Home() {
                                                 return (
                                                     <div className="item">
                                                         <div className="image-container3">
-                                                            <div className={image.id}></div>
+                                                            <div className={image.class}></div>
                                                         </div>
                                                         <h3>{image.name}</h3>
                                                     </div>
@@ -457,7 +462,7 @@ function Home() {
                                                 <div className={fmapp.class}></div>
                                             </div>
                                         </Link>
-                                        <h3 className="para">{fmapp.subtitle}</h3>
+                                        <h3 className="para">掃碼立即下載</h3>
                                         <Link to="/" className="fmapp">
                                             <div className="image-container4">
                                                 <div className="image4 app2"></div>
