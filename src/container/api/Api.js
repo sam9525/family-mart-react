@@ -1,122 +1,134 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+const express = require("express")
+const mysql = require("mysql")
+const sequelizePackage = require("sequelize")
+const {DataTypes, Model, Sequelize} = sequelizePackage
 
-function Api() {
-  const [todos, setTodos] = useState([{userId:2, id: 1357, title: "hello world", completed: false}]);
-  const [newTodo, setNewTodo] = useState({title:'', userId:'', completed: false});  
-  const getTodos = () => {
-    axios.get('https://jsonplaceholder.typicode.com/todos/')
-    .then((res) => {
-      console.log(res);
-      const data = res.data;
-      setTodos(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-  const getTodo = () => {
-    axios.get('https://jsonplaceholder.typicode.com/todos/1')
-    .then((res) => {
-      console.log(res);
-      const data = res.data;
-      setTodos([
-        ...todos,
-        data
-      ])
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-  const postTodo = (data) => {
-    axios.post('https://jsonplaceholder.typicode.com/todos', data)
-    .then((res) => {
-      console.log(res);
-      const data = res.data;
-      setTodos([
-        ...todos,
-        data
-      ])
-    })
-    setNewTodo({title:'', userId:'', completed: false})
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-  const updateTodo = (data) => {
-    axios.patch('https://jsonplaceholder.typicode.com/todos/1', data)
-    .then((res) => {
-      console.log(res);
-      const updatedTodo = res.data;
-      const tmpTodos = todos.map(todo => {
-        if(updatedTodo.id === todo.id){
-          return updatedTodo
-        }
-        return todo;
-      })
-      setTodos(tmpTodos);
-      setNewTodo({title:'', userId:'', completed: false})
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-  const deleteTodo = () => {
-    axios.delete('https://jsonplaceholder.typicode.com/todos/2')
-    .then((res) => {
-      console.log(res);
-      let tmpTodos = todos.slice();
-      let todo = tmpTodos.find(x => x.id === 2);
-      let index = tmpTodos.indexOf(todo);
-      tmpTodos.splice(index, 1);
-      setTodos(tmpTodos);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-  const handleChange = (event) => {
-    if(event.target.type === "checkbox"){
-      setNewTodo({
-        ...newTodo,
-        [event.target.name]:event.target.checked
-      });
-    } else {
-      setNewTodo({
-        ...newTodo,
-        [event.target.name]:event.target.value
-      });
-    }
-  }
-  return (
-    <div className="App">
-      <div><button onClick={() => {getTodos()}}>Get Todos</button></div>
-      <div><button onClick={() => {getTodo()}}>Get Todo 1</button></div>
-      <div><button onClick={() => {postTodo(newTodo)}}>Post Todo</button></div>
-      <div><button onClick={() => {updateTodo(newTodo)}}>Update Todo 1</button></div>
-      <div><button onClick={() => {deleteTodo()}}>Delete Todo 2</button></div>
-      <form>
-        <label>User Id:</label>
-        <input name="userId" value={newTodo.userId} onChange={handleChange} />
-        <br/>
-        <label>Title:</label>
-        <input name="title" value={newTodo.title} onChange={handleChange} />
-        <br/>
-        <label>Completed:</label>
-        <input type="checkbox" name="completed" value={newTodo.completed} onChange={handleChange} />
-      </form>
-      {
-        todos.map((todo) => {
-          return (
-            <div>
-              <div key={todo.id}>title: {todo.title}</div>
-            </div>
-          );
-        })
-      }
-    </div>
-  );
+const sqlize = new Sequelize('todolist', 'root', 'sam998525', {host:'104.199.210.137',dialect: 'mysql'})
+
+try{
+    sqlize.authenticate()
+    console.log('Connect to mysql server sccueefully')
+}catch(err){
+    console.log('Cannot connect to mysql server')
 }
 
-export default Api;
+class Todo extends Model{}
+
+Todo.init(
+    {
+        id: {type: DataTypes.INTEGER, primaryKey: true},
+        title: {type: DataTypes.STRING}
+    }, 
+    {sequelize: sqlize, createdAt: false, updatedAt: false, modelName: 'Todo', tableName: 'Todo'}
+)
+
+Todo.sync()
+
+// const pool = mysql.createPool({
+//     host: 'localhost',x
+//     user: 'root',
+//     password: 'samraber998525',
+//     database: 'TodoList'
+// })
+
+
+const app = express()
+app.use(express.json())
+
+const port = 3000
+
+const results = []
+// function getConnection() {
+//     return new Promise((resolve, reject) => {
+//         pool.getConnection((err, conn) => {
+//             if(err) reject(err)
+//             else resolve(conn)
+//         })
+//     })
+// }
+
+// function exectueQuery(conn, query, data){
+//     return new Promise((resolve, reject) => {
+//         conn.query(query, data, (err, results, fields) => {
+//             if(err) reject(err)
+//             else resolve({results, fields})
+//         })
+//     })
+// }
+
+app.post('/', async (req, res) => {
+    // const conn = await getConnection()
+    // const {results, fields} = await exectueQuery
+    // (conn, 'INSERT INTO Todo VALUES (?, ?)', 
+    // [req.body.id, req.body.title])
+
+    const newTodo = await Todo.create({id: req.body.id, title: req.body.title})
+
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify(newTodo.toJSON()))
+    res.end()
+})
+
+app.get('/', async (req, res) => {
+    // const conn = await getConnection()
+    // const {results, fields} = await exectueQuery
+    // (conn, 'SELECT * FROM Todo')
+
+    const allTodo = await Todo.findAll()
+
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify(allTodo))
+    res.end()
+})
+
+app.get('/:id', async (req, res) => {
+    // const conn = await getConnection()
+    // let {results, fields} = await exectueQuery
+    // (conn, 'SELECT * FROM Todo WHERE id=?', 
+    // [req.params.id])
+
+    const thisTodo = await Todo.findByPk(req.params.id)
+
+    // if(results.length > 0) results = results[0]
+    // else {
+    //     res.status(404)
+    //     res.write('Not found')
+    //     res.end()
+    //     return
+    // }
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify(thisTodo))
+    res.end()
+})
+
+app.put('/:id', async (req, res) => {
+    // const conn = await getConnection()
+    // const {results, fields} = await exectueQuery
+    // (conn, 'UPDATE Todo SET title = ? WHERE id = ?', 
+    // [req.body.title, req.params.id])
+
+    const thisTodo = await Todo.findByPk(req.params.id)
+    thisTodo.set('title', req.body.title)
+    await thisTodo.save()
+
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify(thisTodo.toJSON()))
+    res.end()
+})
+
+app.delete('/:id', async (req, res) => {
+    // const conn = await getConnection()
+    // const {results, fields} = await exectueQuery
+    // (conn, 'DELETE FROM Todo WHERE id = ?', 
+    // [req.params.id])
+
+    await Todo.destroy({where: {id: req.params.id}})
+
+    res.write('OK')
+    res.end()
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
+

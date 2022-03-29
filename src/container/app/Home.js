@@ -46,7 +46,7 @@ function Home() {
   return (
     <StyledWrapper>
         <StyledHeader>
-            <MenuFoldOutlined ref={left0Ref} className="nav__icon" onClick={handleClick} />
+            {/* <MenuFoldOutlined ref={left0Ref} className="nav__icon" onClick={handleClick} /> */}
             <StyledNavbar ref={openRef} className="open">
                 <div className="brand">
                     <h1>familymart</h1>
@@ -107,9 +107,6 @@ function Home() {
         </StyledHeader>
         <StyledTopbar>
             <div className="container">
-                <Link to="/" className="brand">
-                    <h1>familymall</h1>
-                </Link>
                 <ul className="nav">
                     <li className="nav_item">
                         <Link to="" className="nav_link">企業網站</Link>

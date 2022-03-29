@@ -1,0 +1,62 @@
+[
+	{
+		"id":1,
+		"class":"image4 app1",
+		"title":"全家FamilyMart APP",
+		"link":""
+	},
+	{
+		"id":2,
+		"class":"image4 app3",
+		"title":"My FamilPort APP",
+		"link":""
+	},
+	{
+		"id":3,
+		"class":"image4 line1",
+		"title":"全家LINE官方帳號",
+		"link":""
+	},
+	{
+		"id":4,
+		"class":"image4 fans1",
+		"title":"全家FmailyMart粉絲團",
+		"link":""
+	},
+	{
+		"id":5,
+		"class":"image4 fans2",
+		"title":"全家在這裡粉絲團",
+		"link":""
+	},
+	{
+		"id":6,
+		"class":"image4 youtube",
+		"title":"FamiChannel專區",
+		"link":""
+	},
+	{
+		"id":7,
+		"class":"image4 famiclub",
+		"title":"FamiClub",
+		"link":""
+	},
+	{
+		"id":8,
+		"class":"image4 fmih",
+		"title":"全家在這裡部落格",
+		"link":""
+	},
+	{
+		"id":9,
+		"class":"image4 wifi",
+		"title":"FamiWifi",
+		"link":""
+	},
+	{
+		"id":10,
+		"class":"image4 ins",
+		"title":"FamilyMart Instagram",
+		"link":""
+	}
+]

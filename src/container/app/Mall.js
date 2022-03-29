@@ -32,7 +32,7 @@ function Mall() {
     const [todos, setTodos] = useState([]);
 
     const getTodo = () => {
-        axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        axios.get('empyrean-caster-341407:asia-east1:fmailymart')
         .then((res) => {
           console.log(res);
           const data = res.data;

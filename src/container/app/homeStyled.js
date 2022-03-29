@@ -79,7 +79,7 @@ export const StyledWrapper = styled.div`
         color: #333;
     }
     .container{
-        padding: 0 16% 0 16%;
+        padding: 0 13% 0 13%;
     }
     .row:after{
         content: '';
@@ -304,12 +304,12 @@ export const StyledMenu3 = styled.div`
 `
 
 export const StyledTopbar = styled.div`
+    padding-left: 220px;
     width: 100%;
     height: 45px;
     position: fixed;
     top: 0;
     right: 0;
-    margin-left: 220px;
     background-color: #00A040;
     z-index: 25;
 
@@ -352,6 +352,7 @@ export const StyledTopbar = styled.div`
 `
 
 export const StyledJumbortron = styled.div`
+    padding-left: 220px;
     width: 100%;
     height: 100%;
     background-color: #F1F1F1;
@@ -387,6 +388,7 @@ export const StyledJumbortron = styled.div`
 `
 
 export const StyledService = styled.div`
+    padding-left: 220px;
     width: 100%;
     height: 100%;
     background-color: #F1F1F1;
@@ -530,6 +532,7 @@ export const StyledService = styled.div`
 `
 
 export const StyledNews = styled.div`
+    padding-left: 220px;
     width: 100%;
     height: 100%;
     background-color: #F1F1F1;
@@ -665,6 +668,7 @@ export const StyledNews = styled.div`
 `
 
 export const StyledFooter = styled.div`
+    padding-left: 220px;
     width: 100%;
     height: 100%;
     .container{

@@ -1,0 +1,121 @@
+[
+	{
+		"id":1,
+		"class":"image3 np1",
+		"name":"昆布茶泡鰻魚烤飯",
+		"link":""
+	},
+	{
+		"id":2,
+		"class":"image3 np2",
+		"name":"蠔油鮑菇脆筍飯糰(素)",
+		"link":""
+	},
+	{
+		"id":3,
+		"class":"image3 np3",
+		"name":"奶油白醬雙拼焗飯",
+		"link":""
+	},
+	{
+		"id":4,
+		"class":"image3 np4",
+		"name":"培根起司厚蛋堡",
+		"link":""
+	},
+	{
+		"id":5,
+		"class":"image3 Feature",
+		"name":"全館滿$399up免運",
+		"link":""
+	},
+	{
+		"id":6,
+		"class":"image3 play",
+		"name":"teamLab未來遊樂園",
+		"link":""
+	},
+	{
+		"id":7,
+		"class":"image3 activity1",
+		"name":"購物跨店取快閃優惠",
+		"link":""
+	},
+	{
+		"id":8,
+		"class":"image3 activity2",
+		"name":"全家禮物卡",
+		"link":""
+	},
+	{
+		"id":9,
+		"class":"image3 activity3",
+		"name":"繳代收來全家",
+		"link":""
+	},
+	{
+		"id":10,
+		"class":"image3 activity4",
+		"name":"週二減糖日",
+		"link":""
+	},
+	{
+		"id":11,
+		"class":"image3 pre1",
+		"name":"雙廚合作 跨界聯名"
+	},
+	{
+		"id":12,
+		"class":"image3 pre2",
+		"name":"戰地美食",
+		"link":""
+	},
+	{
+		"id":13,
+		"class":"image3 relation1",
+		"name":"迎下加價購",
+		"link":""
+	},
+	{
+		"id":14,
+		"class":"image3 relation2",
+		"name":"享聚卡 會員兌換活動",
+		"link":""
+	},
+	{
+		"id":15,
+		"class":"image3 relation3",
+		"name":"福比麵包",
+		"link":""
+	},
+	{
+		"id":16,
+		"class":"image3 discount",
+		"name":"使用支付工具拿多項優惠",
+		"link":""
+	},
+	{
+		"id":17,
+		"class":"image3 Noticboard1",
+		"name":"全家Clean Label",
+		"link":""
+	},
+	{
+		"id":18,
+		"class":"image3 Noticboard2",
+		"name":"一塊攜手同行",
+		"link":""
+	},
+	{
+		"id":19,
+		"class":"image3 Noticboard3",
+		"name":"謠言澄清",
+		"link":""
+	},
+	{
+		"id":20,
+		"class":"image3 Noticboard3",
+		"name":"隨買跨店取",
+		"link":""
+	}
+]
