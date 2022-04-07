@@ -79,7 +79,10 @@ export const StyledWrapper = styled.div`
         color: #333;
     }
     .container{
-        padding: 0 13% 0 13%;
+        width: 1250px;
+        margin: auto;
+        background-color: #F1F1F1;
+        padding: 0 2%;
     }
     .row:after{
         content: '';
@@ -113,6 +116,18 @@ export const StyledWrapper = styled.div`
     }
     .col-lg-8{
         width: 70%;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .col-md-6 {
+            width: 50%;
+        }
+        .col-md-55 {
+            width: 25%;
+        }
+        .col-md-4 {
+            width: 33.33333%;
+        }
     }
 
     .owl-theme .owl-dots{
@@ -155,33 +170,9 @@ export const StyledHeader = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-    }
-    .nav__icon{
-        position: fixed;
-        top: 0px;
-        left: 220px;
-        padding: 10px;
-        cursor: pointer;
-        color: #fff;
-        z-index: 30;
-        transition: all 0.5s;
-    }
-    .nav__icon:hover{
-        color: #5eb2ff;
-    }
-    svg{
-        width: 25px;
-        height: 25px;
-    }
-    .left0{
-        left: 0;
-    }
-    .open{
-        height: 100%;
-        background-color: #fff;
-    }
+    }  
     .is-nav-open{
-        left: -220px;
+        z-index: 100;
     }
 `
 
@@ -189,7 +180,6 @@ export const StyledNavbar = styled.div`
     width: 220px;
     height: 100%;
     position: fixed;
-    /* display: none; */
     top: 0;
     left: 0;
     z-index: 29;
@@ -202,7 +192,6 @@ export const StyledNavbar = styled.div`
     .navbar-hide{
         top: 45px;
     }
-
     .brand{
         width: 100%;
         height: 100px;
@@ -216,6 +205,9 @@ export const StyledNavbar = styled.div`
         white-space: nowrap;
         text-indent: 100%;
         overflow: hidden;
+    }
+    @media screen and (max-width: 1000px) {
+        display: none;
     }
 `
 
@@ -300,7 +292,92 @@ export const StyledMenu = styled.div`
 `
 
 export const StyledMenu3 = styled.div`
-    display: none;
+    
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    padding: 15% 10%;
+    background-color: white;
+    z-index: 0;
+    .navbar-hide{
+        color: #008BD5;
+        z-index: 20;
+    }
+
+    .close-btn{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 10px;
+        top: -50px;
+    }
+    .close-btn span{
+        width: 30px;
+        height: 2px;
+        position: absolute;
+        background-color: #008BD5;
+        top: 50%;
+        left: 50%;
+    }
+    .close-btn span:nth-child(1){
+        transform: translate(-50%,-50%) rotate(45deg);
+    }
+    .close-btn span:nth-child(2){
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+
+    .menu3-container{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .nav-container {
+        position: relative;
+        width: 100%;
+        cursor: pointer;
+    }
+    
+    .nav-container .nav-content {
+        display: none;
+        padding-left: 25px;
+    }
+    
+    .nav-container .nav-title {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: normal;
+        cursor: pointer;
+    }
+    .nav-title .icon-add{
+        float: right;
+        top: 3px;
+        width: 20px;
+        height: 20px;
+    
+        transition: all 0.3s;
+    }
+    .nav-container .navbox.active .icon-add{
+        color: white;
+    }
+    
+    .nav-container .nav-title:hover,
+    .nav-container .nav-title:active,
+    .nav-container .navbox.active .nav-title {
+        background-color: #52de97;
+    }
+    .navbox.active .nav-content{
+        display: inline-block;
+    }
+    svg{
+        width: 20px;
+        height: 20px;
+    }
+    p{
+        margin: 14px 0; 
+    }
 `
 
 export const StyledTopbar = styled.div`
@@ -314,21 +391,27 @@ export const StyledTopbar = styled.div`
     z-index: 25;
 
     .container{
-        padding: 0 16% 0 16%;
         height: 45px;
+        background-color: #00A040;
     }
-    .brand{
-        display: inline-block;
-
-        background-image: url(${topbottom});
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        
-        white-space: nowrap;
-        text-indent: 100%;
-        overflow: hidden;
+    
+    .nav__icon{
+        position: fixed;
+        top: 0px;
+        padding: 10px;
+        cursor: pointer;
+        color: #fff;
+        z-index: 30;
+        transition: all 0.5s;
+        display: none;
     }
+    .nav__icon:hover{
+        color: #5eb2ff;
+    }
+    svg{
+        width: 25px;
+        height: 25px;
+    }    
     .nav{
         float: right;
     }
@@ -349,12 +432,17 @@ export const StyledTopbar = styled.div`
     .nav .nav_link:hover{
         text-decoration: underline;
     }
+
+    @media screen and (max-width: 1000PX) {
+        padding-left: 0px;
+        .nav__icon{
+            display: inline-block;
+        }
+    }
 `
 
 export const StyledJumbortron = styled.div`
     padding-left: 220px;
-    width: 100%;
-    height: 100%;
     background-color: #F1F1F1;
     margin-top: 45px;
     margin-bottom: -30px;
@@ -365,7 +453,7 @@ export const StyledJumbortron = styled.div`
         top: 0;
         bottom: 0;
 
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -376,7 +464,6 @@ export const StyledJumbortron = styled.div`
         content: '';
         display: block;
         width: 100%;
-        padding-top: 39%;
     }
     /* .jum1{
         background-image: url(${jum1});
@@ -385,6 +472,10 @@ export const StyledJumbortron = styled.div`
         background-position: center;
 
     } */
+
+    @media screen and (max-width: 1000px) {
+        padding-left: 0px;
+    }
 `
 
 export const StyledService = styled.div`
@@ -395,7 +486,7 @@ export const StyledService = styled.div`
     z-index: 10;
     padding-top: 30px;
     padding-bottom: 30px;
-
+    
     .image-container2{
         width: 100%;
     }
@@ -411,7 +502,6 @@ export const StyledService = styled.div`
         right: 0;
         top: 0;
         bottom: 0;
-        margin: 30px;
 
         background-size: contain;
         background-repeat: no-repeat;
@@ -421,7 +511,7 @@ export const StyledService = styled.div`
         position: absolute;
         top: 93%;
         left: 50%;
-        transform: translate(-50%, 0%);
+        transform: translate(-50%, -100%);
         color: #fff;
 
     }
@@ -529,6 +619,9 @@ export const StyledService = styled.div`
         background-color: #000;
     }
 
+    @media screen and (max-width: 1000px) {
+        padding-left: 0px;
+    }
 `
 
 export const StyledNews = styled.div`
@@ -542,6 +635,7 @@ export const StyledNews = styled.div`
     .news_one{
         border: 2px solid rgba(0,0,0,0);
         padding: 10px 10px 10px 10px;
+        margin: 20px;
         margin-bottom: 40px;
         background-color: #fff;
         border-radius: 5px;
@@ -664,6 +758,19 @@ export const StyledNews = styled.div`
     }
     h3{
         text-align: center;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .space {
+            padding: 10px;
+        }
+    }
+    @media screen and (max-width: 1000px) {
+        padding-left: 0px;
     }
 `
 
@@ -697,6 +804,12 @@ export const StyledFooter = styled.div`
     }
     .para{
         text-align: center;
+    }
+    .title, .para {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
     }
     .news_three .para{
         text-align: center;
@@ -801,4 +914,7 @@ export const StyledFooter = styled.div`
         background-image: url(${ins});
     }
     
+    @media screen and (max-width: 1000px) {
+        padding-left: 0px;   
+    }
 `

@@ -109,7 +109,7 @@ function Mall() {
                         <div className="row">
                             {MallData[1].items.map((item, index) => {
                                 return(
-                                    <div className="col-lg-3 srbottom-300">
+                                    <div className="col-lg-3 col-md-4 srbottom-300">
                                         <div className="mall-space">
                                             <Link to="">
                                                 <div className="news_one">

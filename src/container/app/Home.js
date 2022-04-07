@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import 'antd/dist/antd.css'
 import {
     MenuFoldOutlined,
+    PlusOutlined
 } from '@ant-design/icons'
 import {
     StyledWrapper,
@@ -36,18 +37,21 @@ function Home() {
         behavior: 'smooth'
      });
     const openRef = useRef(null)
-    const left0Ref = useRef(null)
+    const activeRef = useRef(null)
     const handleClick = () => {
         const open = openRef.current;
-        open.classList.toggle("is-nav-open")
-        const nav__icon = left0Ref.current;
-        nav__icon.classList.toggle("left0")
+        open.classList.toggle("is-nav-open");
     }
+    const handleActiveClick = () => {
+        const navbox = activeRef.current;
+        navbox.classList.toggle("active");
+        
+    }
+    
   return (
     <StyledWrapper>
         <StyledHeader>
-            {/* <MenuFoldOutlined ref={left0Ref} className="nav__icon" onClick={handleClick} /> */}
-            <StyledNavbar ref={openRef} className="open">
+            <StyledNavbar>
                 <div className="brand">
                     <h1>familymart</h1>
                 </div>
@@ -80,16 +84,21 @@ function Home() {
                         })}
                     </ul>
                 </StyledMenu>
-                <StyledMenu3>
-                    <button className="close-btn">
+            </StyledNavbar>
+            <StyledMenu3 ref={openRef} className="open">
+                <section className="menu3-container">
+                    <button className="close-btn" onClick={handleClick}>
                         <span></span>
                         <span></span>
                     </button>
-                    <section className="menu3-container">
-                        <div className="nav-container">
-                            {HomeData[0].navtitle.map((title, index) => {
-                                <div className="nav-box">
-                                    <div className="nav-title"><div className="icon-add"></div>{title.title}</div>
+                    <div className="nav-container">
+                      {HomeData[0].navtitle.map((title, index) => {
+                            return (
+                                <div ref={activeRef} className="navbox" onClick={handleActiveClick}>
+                                    <div className="nav-title">
+                                        <div className="icon-add"><PlusOutlined /></div>
+                                        {title.title}
+                                    </div>
                                     <div className="nav-content">
                                         {HomeData[0].navtitle[index].inside.map((item, index) => {
                                             return (
@@ -98,15 +107,16 @@ function Home() {
                                         })}
                                     </div>
                                 </div>
-                            })}
-                        </div>
-                    </section>
-                </StyledMenu3>
-            </StyledNavbar>
-        
+                            )
+                        })}
+                    </div>
+                </section>
+            </StyledMenu3>
         </StyledHeader>
         <StyledTopbar>
-            <div className="container">
+              <div className="container">
+                <MenuFoldOutlined className="nav__icon" onClick={handleClick} />
+                  
                 <ul className="nav">
                     <li className="nav_item">
                         <Link to="" className="nav_link">企業網站</Link>
@@ -156,7 +166,7 @@ function Home() {
         <StyledService>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-3 col-md-6">
+                    <div className="col-lg-3">
                         <Fade left>
                             <Link to="/">
                                 <div className="news_one">
@@ -178,7 +188,7 @@ function Home() {
                             </Link>
                         </Fade>
                     </div>
-                    <div className="col-lg-3 col-md-6">
+                    <div className="col-lg-3">
                         <Fade left>
                             <Link to="/">
                                 <div className="news_one">
@@ -271,8 +281,7 @@ function Home() {
         <StyledNews>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-4">
-                        <div className="space">
+                    <div className="col-lg-4 col-md-6">
                             <Fade bottom>
                                 <div>
                                     <div className="news_one">
@@ -292,155 +301,162 @@ function Home() {
                                     </div>
                                 </div>
                             </Fade>
-                            <Fade bottom>
-                                <div>
-                                    <div className="ones news_one">
-                                        <h2>特色商品</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            <div className="item">
-                                                <div className="image-container3">
-                                                    <div className="image3 Feature"></div>
-                                                </div>
-                                                <h3>{HomeData[1].feature[0].name}</h3>
-                                            </div>
-                                        </OwlCarousel>
-                                    </div>
-                                </div>
-                            </Fade>
-                            <Fade bottom>
-                                <div>
-                                    <div className="ones news_one">
-                                        <h2>玩樂生活</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            <div className="item">
-                                                <div className="image-container3">
-                                                    <div className="image3 play"></div>
-                                                </div>
-                                                <h3>{HomeData[1].play[0].name}</h3>
-                                            </div>
-                                        </OwlCarousel>
-                                    </div>
-                                </div>
-                            </Fade>
-                        </div>
                     </div>
-                    <div className="col-lg-4">
-                        <div className="space">
-                            <Fade bottom>
-                                <div>
-                                    <div className="news_one">
-                                        <h2>熱門活動</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeData[1].activity.map((image, index) => {
-                                                return (
-                                                    <div className="item">
-                                                        <div className="image-container3">
-                                                            <div className={image.class}></div>
-                                                        </div>
-                                                        <h3>{image.name}</h3>
-                                                    </div>
-                                                )
-                                            })}
-                                        </OwlCarousel>
-                                    </div>
-                                </div>
-                            </Fade>
-                            <Fade bottom>
-                                <div>
-                                    <div className="news_one">
-                                        <h2>預購精選</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeData[1].pre.map((image, index) => {
-                                                return (
-                                                    <div className="item">
-                                                        <div className="image-container3">
-                                                            <div className={image.class}></div>
-                                                        </div>
-                                                        <h3>{image.name}</h3>
-                                                    </div>
-                                                )
-                                            })}
-                                        </OwlCarousel>
-                                    </div>
-                                </div>
-                            </Fade>
-                            <Fade bottom>
-                                <div>
-                                    <div className="news_one">
-                                        <h2>生活關係企業</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeData[1].relation.map((image, index) => {
-                                                return (
-                                                    <div className="item">
-                                                        <div className="image-container3">
-                                                            <div className={image.class}></div>
-                                                        </div>
-                                                        <h3>{image.name}</h3>
-                                                    </div>
-                                                )
-                                            })}
-                                        </OwlCarousel>
-                                    </div>
-                                </div>
-                            </Fade>
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="space">
-                            <Fade bottom>
-                                <div>
-                                    <div className="ones news_one">
-                                        <h2>支付優惠</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            <div className="item">
-                                                <div className="image-container3">
-                                                    <div className="image3 discount"></div>
-                                                </div>
-                                                <h3>{HomeData[1].play[0].name}</h3>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="ones news_one">
+                                    <h2>特色商品</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        <div className="item">
+                                            <div className="image-container3">
+                                                <div className="image3 Feature"></div>
                                             </div>
-                                        </OwlCarousel>
-                                    </div>
+                                            <h3>{HomeData[1].feature[0].name}</h3>
+                                        </div>
+                                    </OwlCarousel>
                                 </div>
-                            </Fade>
-                            <Fade bottom>
-                                <div>
-                                    <div className="news_one">
-                                        <h2>全家告示牌</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeData[1].noticboard.map((image, index) => {
-                                                return (
-                                                    <div className="item">
-                                                        <div className="image-container3">
-                                                            <div className={image.class}></div>
-                                                        </div>
-                                                        <h3>{image.name}</h3>
+                            </div>
+                        </Fade>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="ones news_one">
+                                    <h2>玩樂生活</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        <div className="item">
+                                            <div className="image-container3">
+                                                <div className="image3 play"></div>
+                                            </div>
+                                            <h3>{HomeData[1].play[0].name}</h3>
+                                        </div>
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </Fade>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="news_one">
+                                    <h2>熱門活動</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        {HomeData[1].activity.map((image, index) => {
+                                            return (
+                                                <div className="item">
+                                                    <div className="image-container3">
+                                                        <div className={image.class}></div>
                                                     </div>
-                                                )
-                                            })}
-                                        </OwlCarousel>
-                                    </div>
+                                                    <h3>{image.name}</h3>
+                                                </div>
+                                            )
+                                        })}
+                                    </OwlCarousel>
                                 </div>
-                            </Fade>
-                            <Fade bottom>
-                                <div>
-                                    <div className="news_one">
-                                        <h2>生活關係企業</h2>
-                                        <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
-                                            {HomeData[1].relation.map((image, index) => {
-                                                return (
-                                                    <div className="item">
-                                                        <div className="image-container3">
-                                                            <div className={image.class}></div>
-                                                        </div>
-                                                        <h3>{image.name}</h3>
+                            </div>
+                        </Fade>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="news_one">
+                                    <h2>預購精選</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        {HomeData[1].pre.map((image, index) => {
+                                            return (
+                                                <div className="item">
+                                                    <div className="image-container3">
+                                                        <div className={image.class}></div>
                                                     </div>
-                                                )
-                                            })}
-                                        </OwlCarousel>
-                                    </div>
+                                                    <h3>{image.name}</h3>
+                                                </div>
+                                            )
+                                        })}
+                                    </OwlCarousel>
                                 </div>
-                            </Fade>
-                        </div>
+                            </div>
+                        </Fade>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="news_one">
+                                    <h2>生活關係企業</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        {HomeData[1].relation.map((image, index) => {
+                                            return (
+                                                <div className="item">
+                                                    <div className="image-container3">
+                                                        <div className={image.class}></div>
+                                                    </div>
+                                                    <h3>{image.name}</h3>
+                                                </div>
+                                            )
+                                        })}
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </Fade>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="ones news_one">
+                                    <h2>支付優惠</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        <div className="item">
+                                            <div className="image-container3">
+                                                <div className="image3 discount"></div>
+                                            </div>
+                                            <h3>{HomeData[1].play[0].name}</h3>
+                                        </div>
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </Fade>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="news_one">
+                                    <h2>全家告示牌</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        {HomeData[1].noticboard.map((image, index) => {
+                                            return (
+                                                <div className="item">
+                                                    <div className="image-container3">
+                                                        <div className={image.class}></div>
+                                                    </div>
+                                                    <h3>{image.name}</h3>
+                                                </div>
+                                            )
+                                        })}
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </Fade>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <Fade bottom>
+                            <div>
+                                <div className="news_one">
+                                    <h2>生活關係企業</h2>
+                                    <OwlCarousel items={1} className="owl-theme tabs2" loop autoplay autoplayTimeout={3000} autoplayHoverPause>
+                                        {HomeData[1].relation.map((image, index) => {
+                                            return (
+                                                <div className="item">
+                                                    <div className="image-container3">
+                                                        <div className={image.class}></div>
+                                                    </div>
+                                                    <h3>{image.name}</h3>
+                                                </div>
+                                            )
+                                        })}
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </Fade>
                     </div>
                 </div>
             </div>

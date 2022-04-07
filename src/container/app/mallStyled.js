@@ -39,7 +39,9 @@ export const StyledWrapper = styled.div`
         color: #333;
     }
     .container{
-        padding: 0 16% 0 16%;
+        width: 1250px;
+        margin: auto;
+        padding: 0 2%;
     }
     .row:after{
         content: '';
@@ -75,6 +77,17 @@ export const StyledWrapper = styled.div`
         width: 60%;
     }
 
+    @media screen and (max-width: 1000px) {
+        .col-md-6 {
+            width: 50%;
+        }
+        .col-md-55 {
+            width: 25%;
+        }
+        .col-md-4 {
+            width: 33.33333%;
+        }
+    }
 `
 
 export const StyledTopbar = styled.div`
@@ -88,7 +101,6 @@ export const StyledTopbar = styled.div`
     z-index: 25;
 
     .container{
-        padding: 0 16% 0 16%;
         height: 45px;
     }
     .brand{
@@ -134,9 +146,10 @@ export const StyledTopbar = styled.div`
 `
 
 export const StyledMall = styled.div` 
-    .container2{
-        padding-right: 16%;
-        padding-left: 16%;   
+    .container2{ 
+        width: 1250px;
+        margin: auto;
+        padding: 0 2%;
     }
     .nav_crumb_list{
         padding-top: 65px;
@@ -197,6 +210,7 @@ export const StyledMall = styled.div`
         padding: 10px;
         margin-bottom: 0px;
         background-color: #f1f1f1;
+        height: 310px;
     }
     .news-mall .para{
         text-align: left;
@@ -259,6 +273,12 @@ export const StyledMall = styled.div`
     }
     img{
         width: 100%;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .news-mall .news_one {
+            height: 400px;
+        }
     }
 `
 

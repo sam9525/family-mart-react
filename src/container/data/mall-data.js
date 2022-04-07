@@ -1025,7 +1025,7 @@ const MallData = [
             {
                 "id":16,
                 "src":"assets/img/EP16.jpg",
-                "title":"貝恩潔膚抗菌柔濕巾30抽x20包",
+                "title":"【抗菌柔濕巾】貝恩潔膚抗菌柔濕巾30抽x20包",
                 "price":"NT$1,100",
                 "redprice":"NT$699",
                 "link":""
