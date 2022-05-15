@@ -39,7 +39,7 @@ export const StyledWrapper = styled.div`
         color: #333;
     }
     .container{
-        width: 1250px;
+        max-width: 1250px;
         margin: auto;
         padding: 0 2%;
     }
@@ -147,9 +147,12 @@ export const StyledTopbar = styled.div`
 
 export const StyledMall = styled.div` 
     .container2{ 
-        width: 1250px;
+        max-width: 1250px;
         margin: auto;
         padding: 0 2%;
+    }
+    @media screen and (max-width: 1000px) {
+        max-width: 100%;
     }
     .nav_crumb_list{
         padding-top: 65px;
@@ -210,7 +213,6 @@ export const StyledMall = styled.div`
         padding: 10px;
         margin-bottom: 0px;
         background-color: #f1f1f1;
-        height: 310px;
     }
     .news-mall .para{
         text-align: left;
@@ -231,7 +233,7 @@ export const StyledMall = styled.div`
     }
     .news-mall .para .red-price{
         color: red;
-        font-size: 20px;
+        font-size: 16px;
     }
     svg{
         width: 25px;
@@ -275,9 +277,17 @@ export const StyledMall = styled.div`
         width: 100%;
     }
 
-    @media screen and (max-width: 1000px) {
-        .news-mall .news_one {
-            height: 400px;
+    @media screen and (max-width: 1300px) {
+        .col-lg-8 {
+           width: 50%;
+        }
+    }
+    @media screen and (max-width: 750px) {
+        
+        svg {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
         }
     }
 `

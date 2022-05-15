@@ -457,19 +457,19 @@ const HomeData = [
             {
                 "id":1,
                 "class":"image4 app1",
-                "title":"全家FamilyMart APP",
+                "title":"FamilyMart APP",
                 "link":""
             },
             {
                 "id":2,
                 "class":"image4 app3",
-                "title":"My FamilPort APP",
+                "title":"FamilPort APP",
                 "link":""
             },
             {
                 "id":3,
                 "class":"image4 line1",
-                "title":"全家LINE官方帳號",
+                "title":"LINE官方帳號",
                 "link":""
             }
         ],

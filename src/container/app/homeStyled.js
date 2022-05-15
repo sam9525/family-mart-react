@@ -79,17 +79,22 @@ export const StyledWrapper = styled.div`
         color: #333;
     }
     .container{
-        width: 1250px;
+        width: 75%;
         margin: auto;
         background-color: #F1F1F1;
         padding: 0 2%;
+    }
+    @media screen and (max-width: 1000px) {
+        .container {
+            width: 90%
+        }
     }
     .row:after{
         content: '';
         display: block;
         clear: both;
     }
-    .col-lg-6,.col-lg-4,.col-lg-3,.col-lg-12,.col-lg-5,.col-lg-55,.col-lg-7,.col-lg-8,.col-md-6{
+    .col-lg-6,.col-lg-4,.col-lg-3,.col-lg-12,.col-lg-5,.col-lg-55,.col-lg-7,.col-lg-8,.col-md-6, .col-sm-6 {
         /* border: 1px solid red; */
         float: left;
     }
@@ -127,6 +132,11 @@ export const StyledWrapper = styled.div`
         }
         .col-md-4 {
             width: 33.33333%;
+        }
+    }
+    @media screen and (max-width: 700px) {
+        .col-sm-6 {
+            width: 50%;
         }
     }
 
@@ -342,7 +352,8 @@ export const StyledMenu3 = styled.div`
         padding-left: 25px;
     }
     
-    .nav-container .nav-title {
+    .nav-container .nav-title,
+    .nav-container .nav_item {
         display: block;
         position: relative;
         margin: 0;
@@ -427,7 +438,7 @@ export const StyledTopbar = styled.div`
     .nav .nav_link{
         font-size:  18px;
         padding: 6px 10px 6px 10px;
-        color: #fff;
+        color: #fff;ㄕ
     }
     .nav .nav_link:hover{
         text-decoration: underline;
@@ -437,6 +448,9 @@ export const StyledTopbar = styled.div`
         padding-left: 0px;
         .nav__icon{
             display: inline-block;
+        }
+        .nav {
+            display: none;
         }
     }
 `
@@ -487,6 +501,12 @@ export const StyledService = styled.div`
     padding-top: 30px;
     padding-bottom: 30px;
     
+    .title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
     .image-container2{
         width: 100%;
     }
@@ -629,12 +649,9 @@ export const StyledNews = styled.div`
     width: 100%;
     height: 100%;
     background-color: #F1F1F1;
-    .space{
-        padding: 20px;
-    }
     .news_one{
         border: 2px solid rgba(0,0,0,0);
-        padding: 10px 10px 10px 10px;
+        padding: 10px;
         margin: 20px;
         margin-bottom: 40px;
         background-color: #fff;
@@ -764,9 +781,9 @@ export const StyledNews = styled.div`
         overflow: hidden;
     }
 
-    @media screen and (max-width: 1000px) {
-        .space {
-            padding: 10px;
+    @media screen and (max-width: 1300px) {
+        .news_one {
+            margin: 10px 10px 20px;
         }
     }
     @media screen and (max-width: 1000px) {
@@ -913,7 +930,15 @@ export const StyledFooter = styled.div`
     .ins{
         background-image: url(${ins});
     }
-    
+
+    @media screen and (max-width: 1300px) {
+        .space {
+            padding: 10px;
+        }
+        .title {
+            padding: 5px;
+        }
+    }
     @media screen and (max-width: 1000px) {
         padding-left: 0px;   
     }

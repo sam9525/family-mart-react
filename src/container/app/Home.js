@@ -91,7 +91,21 @@ function Home() {
                         <span></span>
                         <span></span>
                     </button>
-                    <div className="nav-container">
+                      <div className="nav-container">
+                        <ul className="nav">
+                            <li className="nav_item">
+                                <Link to="" className="nav_link">企業網站</Link>
+                            </li>
+                            <li className="nav_item">
+                                <Link to="" className="nav_link">加盟網站</Link>
+                            </li>
+                            <li className="nav_item">
+                                <Link to="" className="nav_link">人氣資源</Link>
+                            </li>
+                            <li className="nav_item">
+                                <Link to="Mall" className="nav_link">全家商場</Link>
+                            </li>
+                        </ul>
                       {HomeData[0].navtitle.map((title, index) => {
                             return (
                                 <div ref={activeRef} className="navbox" onClick={handleActiveClick}>
@@ -281,7 +295,7 @@ function Home() {
         <StyledNews>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                             <Fade bottom>
                                 <div>
                                     <div className="news_one">
@@ -302,7 +316,7 @@ function Home() {
                                 </div>
                             </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="ones news_one">
@@ -319,7 +333,7 @@ function Home() {
                             </div>
                         </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="ones news_one">
@@ -336,7 +350,7 @@ function Home() {
                             </div>
                         </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="news_one">
@@ -357,7 +371,7 @@ function Home() {
                             </div>
                         </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="news_one">
@@ -378,7 +392,7 @@ function Home() {
                             </div>
                         </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="news_one">
@@ -399,7 +413,7 @@ function Home() {
                             </div>
                         </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="ones news_one">
@@ -416,7 +430,7 @@ function Home() {
                             </div>
                         </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="news_one">
@@ -437,7 +451,7 @@ function Home() {
                             </div>
                         </Fade>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-sm-6">
                         <Fade bottom>
                             <div>
                                 <div className="news_one">
