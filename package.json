@@ -20,7 +20,6 @@
     "firebase": "^9.6.6",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
-    "mysql": "github:mysqljs/mysql",
     "mysql2": "^2.3.3",
     "react": "^17.0.2",
     "react-animations": "^1.0.0",
