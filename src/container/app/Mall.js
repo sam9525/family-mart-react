@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import 'antd/dist/antd.css'
 import {
     Menu,
@@ -6,10 +6,12 @@ import {
 import {
     ShoppingCartOutlined,
     HeartOutlined,
+    MenuFoldOutlined,
 } from '@ant-design/icons'
 import {
     StyledWrapper,
     StyledTopbar,
+    StyledTopbarMenu,
     StyledMall,
     StyledFooter
 } from './mallStyled.js'
@@ -27,25 +29,16 @@ function Mall() {
         left: 0,
         behavior: 'smooth'
     });
-
-
-    const [todos, setTodos] = useState([]);
-
-    const getTodo = () => {
-        axios.get('empyrean-caster-341407:asia-east1:fmailymart')
-        .then((res) => {
-          console.log(res);
-          const data = res.data;
-          setTodos([
-            ...todos,
-            data
-          ])
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-      }
-
+    const openRef = useRef(null)
+    const handleClick = () => {
+        const open = openRef.current;
+        open.classList.toggle("is-nav-open");
+    }
+    const open2Ref = useRef(null)
+    const handleClick2 = () => {
+        const open2 = open2Ref.current;
+        open2.classList.toggle("is-nav-open");
+    }
 
     return (
         <StyledWrapper>
@@ -55,18 +48,6 @@ function Mall() {
                         <h1>familymall</h1>
                     </Link>
                     <ul className="nav">
-                        <li className="nav_item">
-                            <button onClick={() => {getTodo()}} className="nav_link">最新商品</button>
-                        </li>
-                        {
-                            todos.map((todo) => {
-                                return (
-                                  <div>
-                                    <div key={todo.id}>title: {todo.title}</div>
-                                  </div>
-                                );
-                              })
-                        }
                         <li className="nav_item">
                             <Link to="" className="nav_link">最新商品</Link>
                         </li>
@@ -79,21 +60,48 @@ function Mall() {
                         <li className="nav_item">
                             <Link to="" className="nav_link">活動資訊</Link>
                         </li>
-                        <li className="nav_item">
-                            <Link to="">
-                                <ShoppingCartOutlined className="nav__icon"/>
-                            </Link>
-                        </li>
+                        <Link to="">
+                            <ShoppingCartOutlined className="nav__icon"/>
+                        </Link>
                     </ul>
+                    <MenuFoldOutlined className="nav__icon" onClick={handleClick2} />
                 </div>
             </StyledTopbar>
+            <StyledTopbarMenu ref={open2Ref} className="open">
+                <section className="menu3-container">
+                    <button className="close-btn" onClick={handleClick2}>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div className="nav-container">
+                        <ul className="nav">
+                            <li className="nav_item">
+                                <Link to="/" className="nav_link">全家就是你家</Link>
+                            </li>
+                            <li className="nav_item">
+                                <Link to="" className="nav_link">企業網站</Link>
+                            </li>
+                            <li className="nav_item">
+                                <Link to="" className="nav_link">加盟網站</Link>
+                            </li>
+                            <li className="nav_item">
+                                <Link to="" className="nav_link">人氣資源</Link>
+                            </li>
+                            <li className="nav_item">
+                                <Link to="Mall" className="nav_link">全家商場</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </StyledTopbarMenu>
             <StyledMall>
                 <div className="container2">
                     <div className="nav_crumb_list">
-                        <Link to="" className="ncl_item">首頁 ></Link>
+                        <MenuFoldOutlined className="nav__icon" onClick={handleClick} />
+                        <Link to="/" className="ncl_item">首頁 ></Link>
                         <Link to="" className="ncl_item">抗菌大作戰 健康疫起來</Link>
                     </div>
-                    <div className="slider-container">
+                    <div className="slider-container" ref={openRef} >
                         <Sider />
                     </div>
                     <div className="news news-mall">
@@ -142,7 +150,7 @@ function Mall() {
                     <div className="row">
                         <div className="col-lg-5 col-md-4">
                             <div className="space">
-                                <h3 className="title">全家FamilyMart APP</h3>
+                                <h3 className="title">FamilyMart APP</h3>
                                 <div className="news_two">
                                     <Link to="/" className="fmapp">
                                         <div className="image-container4">
@@ -178,7 +186,7 @@ function Mall() {
                         </div>
                         <div className="col-lg-5 col-md-4">
                             <div className="space">
-                                <h3 className="title">全家LINE官方帳號</h3>
+                                <h3 className="title">LINE官方帳號</h3>
                                 <div className="news_two">
                                     <Link to="/" className="fmapp">
                                         <div className="image-container4">

@@ -182,6 +182,7 @@ export const StyledHeader = styled.div`
         transform: translate(-50%, -50%);
     }  
     .is-nav-open{
+        left: 0;
         z-index: 100;
     }
 `
@@ -307,6 +308,7 @@ export const StyledMenu3 = styled.div`
     width: 100%;
     height: 100%;
     top: 0;
+    left: -500px;
     padding: 15% 10%;
     background-color: white;
     z-index: 0;
@@ -642,6 +644,14 @@ export const StyledService = styled.div`
     @media screen and (max-width: 1000px) {
         padding-left: 0px;
     }
+    @media screen and (max-width: 700px) {
+        .react-tabs__tab {
+            width: 50%;
+        }
+        .react-tabs__tab-panel {
+            width: 100%;
+        }
+    }
 `
 
 export const StyledNews = styled.div`
@@ -652,8 +662,7 @@ export const StyledNews = styled.div`
     .news_one{
         border: 2px solid rgba(0,0,0,0);
         padding: 10px;
-        margin: 20px;
-        margin-bottom: 40px;
+        margin: 2.3vmin;
         background-color: #fff;
         border-radius: 5px;
 
@@ -661,6 +670,11 @@ export const StyledNews = styled.div`
     }
     .news_one h2{
         padding: 5px 0;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
     }
     .news_one:hover{
         border: 2px solid #008BD5;

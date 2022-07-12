@@ -76,7 +76,10 @@ export const StyledWrapper = styled.div`
     .col-lg-8{
         width: 60%;
     }
-
+    .is-nav-open{
+        left: 0;
+    }
+    
     @media screen and (max-width: 1000px) {
         .col-md-6 {
             width: 50%;
@@ -135,14 +138,122 @@ export const StyledTopbar = styled.div`
     .nav .nav_link:hover{
         text-decoration: underline;
     }
-    .nav__icon:hover{
-        color: #5eb2ff;
+    .nav__icon{
+        float: right;
+        padding: 10px;
     }
     svg{
         width: 25px;
         height: 25px;
     }
+    .nav__icon {
+        display: none;
+        color: white;
+    }
 
+    @media screen and (max-width: 800px) {
+        .nav {
+            display: none;
+        }
+        .nav__icon {
+            display: inline-block;
+        }
+    }
+
+`
+
+export const StyledTopbarMenu = styled.div`
+    position: fixed;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    padding: 15% 10%;
+    background-color: white;
+    z-index: 100;
+    transition: all 0.5s;
+    .navbar-hide{
+        color: #008BD5;
+        z-index: 20;
+    }
+
+    .close-btn{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 10px;
+        top: -50px;
+        border: 0;
+        background-color: #fff;
+    }
+    .close-btn span{
+        width: 30px;
+        height: 2px;
+        position: absolute;
+        background-color: #008BD5;
+        top: 50%;
+        left: 50%;
+    }
+    .close-btn span:nth-child(1){
+        transform: translate(-50%,-50%) rotate(45deg);
+    }
+    .close-btn span:nth-child(2){
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+
+    .menu3-container{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .nav-container {
+        position: relative;
+        width: 100%;
+        cursor: pointer;
+    }
+    
+    .nav-container .nav-content {
+        display: none;
+        padding-left: 25px;
+    }
+    
+    .nav-container .nav-title,
+    .nav-container .nav_item {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: normal;
+        cursor: pointer;
+    }
+    .nav-title .icon-add{
+        float: right;
+        top: 3px;
+        width: 20px;
+        height: 20px;
+    
+        transition: all 0.3s;
+    }
+    .nav-container .navbox.active .icon-add{
+        color: white;
+    }
+    
+    .nav-container .nav-title:hover,
+    .nav-container .nav-title:active,
+    .nav-container .navbox.active .nav-title {
+        background-color: #52de97;
+    }
+    .navbox.active .nav-content{
+        display: inline-block;
+    }
+    svg{
+        width: 20px;
+        height: 20px;
+    }
+    p{
+        margin: 14px 0; 
+    }
+    
 `
 
 export const StyledMall = styled.div` 
@@ -160,11 +271,34 @@ export const StyledMall = styled.div`
     }
     .ncl_item{
         padding: 10px;
+        font-size: 18px;
+        justify-content: center;
+        text-align: center;
+    }
+    .nav__icon {
+        display: none;
+    }
+    @media screen and (max-width: 800px ){
+        .nav__icon {
+            display: inline-block;
+        }
+    }
+    .nav__icon{
+        padding: 10px;
+        cursor: pointer;
+        color: #000000;
+        z-index: 30;
+        transition: all 0.5s;
+    }
+    .nav__icon svg {
+        width: 25px;
+        height: 25px;
     }
     .slider-container{
         float: left;
         width: 20%;
     }
+    
     .ant-menu{
         background-color: #f1f1f1;
         border-color: #fff;
@@ -205,9 +339,8 @@ export const StyledMall = styled.div`
         border: 2px solid #008BD5;
         box-shadow: 5px 5px 14px -10px #000;
     }
-    
     .mall-space{
-        padding: 10px;
+        padding: 1vmin;
     }
     .news-mall .news_one{
         padding: 10px;
@@ -235,9 +368,9 @@ export const StyledMall = styled.div`
         color: red;
         font-size: 16px;
     }
-    svg{
-        width: 25px;
-        height: 25px;
+    .news_one svg{
+        width: 3vmin;
+        height: 3vmin;
         margin-left:10px;
     }
     .hidden{
@@ -282,12 +415,27 @@ export const StyledMall = styled.div`
            width: 50%;
         }
     }
-    @media screen and (max-width: 750px) {
-        
+    @media screen and (max-width: 800px) {
         svg {
-            width: 20px;
-            height: 20px;
             margin-left: 5px;
+        }
+        .slider-container{
+            position: absolute;
+            left: -300px;
+            z-index: 20;
+            transition: all 0.5s;
+        }
+        .is-nav-open {
+            left: 2%;
+        }
+        .slider-container{
+            width: 40vmin;
+        }
+        .news-mall{
+            width: 100%;
+        }
+        .nav_crumb_list {
+            padding-bottom: 0;
         }
     }
 `
@@ -319,6 +467,7 @@ export const StyledFooter = styled.div`
         line-height: 24px;
         text-align: center;
         white-space: nowrap;
+        overflow: hidder;
     }
     .para{
         text-align: center;
@@ -425,5 +574,15 @@ export const StyledFooter = styled.div`
     .ins{
         background-image: url(${ins});
     }
-    
+    @media screen and (max-width: 1300px) {
+        .space {
+            padding: 10px;
+        }
+        .title {
+            padding: 5px;
+        }
+    }
+    @media screen and (max-width: 1000px) {
+        padding-left: 0px;   
+    }
 `
